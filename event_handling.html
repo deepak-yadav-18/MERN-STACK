@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event handling</title>
+    <style>
+        .h1{
+            color: red;
+        }
+        .load{
+            height: 300px;
+            width: 300px;
+            border: 10px dashed grey;
+            border-radius: 50%;
+            animation: load 2s linear infinite;
+        }
+
+        @keyframes load{
+            to{
+                transform: rotate(360deg);
+            }
+        }
+
+        .input{
+            /* color: green; */
+            border: 4px solid green;
+            outline: none;
+        }
+    </style>
+</head>
+<body onoffline="load()" ononline="Noload()">
+    <h1 >This is a Heading1</h1>
+    <h1 class="heading1">This is a Heading2</h1>
+    <button onmouseenter="change()" onmouseleave="undo()">click me</button>
+    <input type="text" name="" id="input" placeholder="enter some text" oninput="input()">
+    <script>
+        /*
+        event handling :- 
+        -----------------
+        Event handling in JavaScript is the process of responding to user actions or browser occurrences, 
+        such as clicks, key presses, or page loading, to create dynamic and interactive web pages
+
+        <tagName onEventName="functionCall()"> content </tagName>
+        
+        In JS :-
+        ---------
+        function functionName(){
+            statement...
+        }
+        */
+
+        /*
+        In js there are two types of scope of a variable
+        -------------------------------------------------
+        1. global scope :- Variable outside function body has global scope.
+        2. local scope :- Variable inside function body has local scope.
+        */
+
+       let h1 = document.querySelector("h1");
+
+        function change(){
+            h1.innerText ="New Text";
+            h1.setAttribute("class","h1");
+        }
+
+        function undo(){
+            h1.innerText ="This is Heading1";
+            h1.removeAttribute("class");
+
+        }
+
+
+        let body = document.querySelector("body");
+        function load(){
+            alert("Page offline");
+            body.setAttribute("class","load")
+        }
+        function Noload(){
+            alert("Page online");
+            body.removeAttribute("class")
+        }
+
+        let inpt = document.querySelector("#input");
+
+        function input(){
+            inpt.setAttribute("class","input");
+        }
+    </script>
+</body>
+</html>
